@@ -8,6 +8,7 @@
         <p>hi btw hi</p>
         <p>lekker coffee</p>
         <p>pizzaria</p>
-        <p>with extra cheez<p>
+        <p>with extra cheez</p>
+        <p> pedro loves cheeze </p>
     </body>
 </html>
