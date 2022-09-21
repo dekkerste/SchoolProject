@@ -25,7 +25,7 @@ Activate the environment
 
 ```$ . venv/bin/activate```
 
-```$ pip install Flask```
+```$ pip install requirements.txt```
 
 start de webserver:
 
