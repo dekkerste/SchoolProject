@@ -31,4 +31,18 @@ start de webserver:
 
 ```$ flask --app main run```
 
+Zet de websever op DEBUG:
+
+```$ set FLASK_ENV=development ```
+
+```$ set FLASK_DEBUG=1```
+
+op linux moet je set met export vervangen:
+
+```$ export FLASK_ENV=development ```
+
+
+```$ export FLASK_DEBUG=1```
+
+
 Let er dan op dat alle andere libaries zoals imageai en djitellopy ook geinstaleerd moeten worden in de virtual enviroment (. venv/bin/activate en dan pip install)
