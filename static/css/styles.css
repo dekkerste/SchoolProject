@@ -1,0 +1,38 @@
+body, html {
+  font-family: sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #555;
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 4rem 1rem;
+}
+
+main {
+  max-width: 50em;
+  margin: 0 auto;
+}
+
+h1,h2,h3 {
+  color: #333;
+  padding-top: 1em;
+  margin-top: 1em;
+}
+
+button {
+  display: inline-block;
+  font-size: 14px;
+  background-color: #30799B;
+  color: #fff;
+  padding: 10px 24px;
+  border: none;
+  user-select: none;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
