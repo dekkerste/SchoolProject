@@ -3,8 +3,9 @@ from djitellopy import Tello
 drone = Tello()
 drone.connect()
 
-def startup()
+drone.takeoff()
+drone.get_battery()
 
-def connect(self, wait_for_state=True):
-
+def opdracht1():
+    drone.get_battery()
 
