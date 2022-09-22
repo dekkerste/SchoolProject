@@ -8,7 +8,6 @@ import logging
 # import cv2
 from djitellopy import tello
 import time
-import imageai
 # https://flask.palletsprojects.com/en/2.2.x/installation/
 # Use a virtual environment to manage the dependencies for your project, both in development and in production.
 #
