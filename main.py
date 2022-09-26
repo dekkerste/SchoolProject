@@ -19,7 +19,6 @@ import time
 # project will not affect other projects or the operating system’s packages.
 from flask import Flask
 from flask import Flask, render_template
-import pyscreenshot
 import random
 import string
 
