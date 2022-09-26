@@ -21,3 +21,9 @@ def move_up():
 
 def move_down():
     drone.move_down()
+
+def move_left():
+    drone.move_left()
+
+def move_right():
+    drone.move_left()
