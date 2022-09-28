@@ -27,3 +27,9 @@ def move_left():
 
 def move_right():
     drone.move_left()
+
+def flip_left()
+    drone.flip_left()
+
+def flip_right()
+    drone.flip_right()
