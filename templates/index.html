@@ -13,7 +13,7 @@
 
 <body>
   <div class="gray px-1 py-1">
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-1 lg:gap-x-1">
+    <div class="grid grid-cols-3 gap-1">
       <div class="white row-span-2 px-6 pb-8 rounded">
         <h3 class="font-bold mb-2 my-2 py-2 text-4xl">Commands</h3> <!-- Hier komen de commands voor de drone. -->
         <button id="get_ss">Take off drone</button><br>
@@ -25,24 +25,24 @@
       </div>
       <div class="white col-span-2 px-6 pb-20 rounded">
         <h3 class="font-semibold text-lg mb-2">Drone POV</h3> <!-- Hier komt de POV van de drone. -->
-        
+        <!-- POV -->
       </div>
       <div class="white col-span-2 px-6 pb-20 rounded">
         <h3 class="font-semibold text-lg mb-2">Drone Controles</h3> <!-- Hier komt de controles van de drone. -->
-        
+        <!-- Handmatige controles -->
       </div>
     </div>
   </div>
 
-  <footer class="bg-gray-50 text-gray-600 px-6 lg:px-8 py-12">
-    <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 mt-16 lg:mt-20 border-t-2 border-gray-200 pt-8 ">
+  <footer class="absolute inset-x-0 bottom-0  text-gray-600 px-6 py-12">
+    <div class="space-y-4 mt-16 lg:mt-20 border-t-2 border-gray-200 pt-8 ">
       <div class="text-sm space-y-4 md:space-y-1 text-center md:text-left">
         <p>©2022 Emanuel-Company. All rights reserved. | All rights reserved</p>
         <p>'You are a Whooee.'</p>
       </div>
     </div>
-    <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 mt-8 lg:mt-12">
-      <nav class="flex flex-wrap justify-center space-x-6"> 
+    <div class="space-y-4 mt-8 lg:mt-12">
+      <nav class="space-x-6"> 
         <a href="https://www.rijksoverheid.nl/onderwerpen/drone/vraag-en-antwoord/regels-drone-laag-risico" class="font-normal text-sm hover:text-black mb-2">Veiligheids Voorschriften</a> <!-- Link naar vleiligheids voorschriften van Nederland. -->
         <a href="/files/Vliegplan formulier.pdf" download class="font-normal text-sm hover:text-black mb-2">Vluchtplan</a> <!-- Download link van vluchtplan. -->
         <a href="#" class="font-normal text-sm hover:text-black mb-2">Privacy</a>
