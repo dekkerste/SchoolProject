@@ -1,3 +1,4 @@
 .idea
 venv
 python/pictures/Image.jpg
+node_modules
