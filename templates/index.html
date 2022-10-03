@@ -1,62 +1,16 @@
-<!DOCTYPE html>
+<!DOCK-TYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Drone control centre</title>
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/styles.css') }}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-</head>
-
 <body>
-{% block content %}
-    <main>
-        <section id="about">
-            <h1>Drone control application</h1>
-            <p>Use the buttons to send commands to the Drone.</p>
-        </section>
-        <section>
-            <button id="get_ss">Take off drone</button>
-            <button id="get_ss">Take off drone</button>
 
-            <p>Test the drone app. Upon button pres you should see a message</p>
-            <button id="test">Test Drone App</button>
-            <script type=text/javascript>
-                $('#test').click(function() {
-                    $.ajax({
-                        url: '/test',
-                        type: 'POST',
-                        success: function(response) {
-                            $('#show_ss').html(response);
-                            $('#get_ss').hide();
-                        }
-                    });
-                });
-            </script>
+<form id="form" method="post">
+    <input type="submit" value="Connect" name="Connect"/>
+    <input type="submit" value="TakeOff" name="TakeOff"/>
+</form>
+<p>{{ message }}</p>
 
-            <div id="show_ss"><!-- Show ss --></div>
-        </section>
-        <hr>
-        <section>
-            <p>{{message}}</p>
-        </section>
-    </main>
-{% endblock %}
-<script type=text/javascript>
-    $('#get_ss').click(function() { // Button
-        $('#get_ss').addClass('is-loading');
-        $.ajax({
-            url: '/dronetakeoff',
-            type: 'POST',
-            success: function(response) {
-                $('#show_ss').html(response);
-                $('#get_ss').hide();
-            }
-        });
-    });
-</script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
 </body>
-
 </html>
+
