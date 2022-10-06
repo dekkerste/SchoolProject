@@ -3,7 +3,6 @@ from djitellopy import tello
 
 app = Flask(__name__)
 
-
 @app.route("/", methods=['GET', 'POST'])
 def index(message=None):  # the message var needs to be set to zero
     if request.method == 'POST':
