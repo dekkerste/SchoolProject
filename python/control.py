@@ -8,6 +8,7 @@ except:
 # drone.get_battery()
 
 
+
 def speed():
     print(drone.get_speed_x())
     print(drone.get_speed_y())
@@ -44,6 +45,16 @@ def flip_left():
 def flip_right():
     drone.flip_right()
 
-# move_right(180)
-# move_left(180)
-# drone.land()
+def move_forward(a: int):
+    drone.move_forward(a)
+
+
+def move_back(b: int):
+    drone.move_back(b)
+
+
+move_forward(100)
+move_right(100)
+move_back(100)
+move_left(100)
+drone.land()
