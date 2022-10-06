@@ -1,61 +1,54 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+#!venv/bin/python3
+import json
 
-# install python packages in the requirements.txt file:
-# pip install requirements.txt
-
-import logging
-# import cv2
+import cv2
+import numpy as np
+import requests as requests
+from flask import Flask, render_template, request, flash, redirect, Response
 from djitellopy import tello
-import time
-import imageai
-# https://flask.palletsprojects.com/en/2.2.x/installation/
-# Use a virtual environment to manage the dependencies for your project, both in development and in production.
-#
-# What problem does a virtual environment solve? The more Python projects you have, the more likely it is that you need
-# to work with different versions of Python libraries, or even Python itself. Newer versions of libraries for one
-# project can break compatibility in another project.
-#
-# Virtual environments are independent groups of Python libraries, one for each project. Packages installed for one
-# project will not affect other projects or the operating system’s packages.
-from flask import Flask
-from flask import Flask, render_template
-import pyscreenshot
-import random
-import string
-
-
-logger = logging.getLogger(__name__)
+# Imports the drone commands. This is used as a shortcut from control.py
+try:
+    from python.control import drone
+except ImportError:
+    print('Error while trying to import "control.py"')
 
 app = Flask(__name__)
+app.secret_key = '1234'
 
 
-@app.route('/')
-def index():
-	return render_template('index.html')
+@app.route("/", methods=['GET', 'POST'])
+def index():  # the message var needs to be set to zero
+    return render_template("index.html")
 
 
-@app.route('/dronetakeoff', methods=['POST'])
-def dronetakeoff():
-	# Connects to the Drone. A Wi-Fi connection to the Drone is required
-	drone = tello.Tello()
-	drone.connect()
-	return render_template('show.html')
+@app.route('/connect', methods=['GET', 'POST'])
+def connect():
+    print('connecting to drone')
+    try:
+        drone.connect()
+        print('The drone is connected!')
+    except:
+        print('something went wrong')
+    return render_template("index.html")
+
+
+@app.route('/takeoff', methods=['GET', 'POST'])
+def takeoff():
+    print('taking off the drone')
+    try:
+        drone.takeoff()
+        print('The drone has taken off')
+    except:
+        print('something went wrong')
+    return render_template("index.html")
+
+
+@app.route('/customcommand', methods=['GET', 'POST'])
+def customcommand():
+    cust = request.form['customcommandcontents']
+    print(cust)
+    return render_template("index.html")
 
 
 if __name__ == '__main__':
-	# Only run the program if  the name of the file is main.py
-	# sets the debugger from flak to enable autoreload
-	app.run(debug=True)
-	app.config['ENV'] = 'development'
-	app.config['DEBUG'] = True
-	app.config['TESTING'] = True
-	# Uses a debugger to show error messages
-	logging.basicConfig(level=logging.DEBUG)  # Based on pep, witch is also used in PyCharm
-	logger.info("main.py logger")
-
-	# Connects to the Drone
-	# connect()
-	# Shows a message that the app has started
-	print('The application has started')
-	# auto reload page on code change
+    app.run(host="127.0.0.1", port=8000, debug=True)

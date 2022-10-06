@@ -1,41 +1,34 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Drone control centre</title>
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/styles.css') }}">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
+    <title>App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
-
+</head>
 <body>
-<main>
-  <section id="about">
-    <h1>Drone control application</h1>
-    <p>Use the buttons to send commands to the Drone.</p>
-  </section>
-  <section>
-    <button id="get_ss">Take off drone</button>
-    <button id="get_ss">Take off drone</button>
-    <div id="show_ss"><!-- Show ss --></div>
-  </section>
-</main>
+{% block content %}
+    <main>
+        <section>
+            <h1>Drone control centre</h1>
+            <p>Drone pre controls</p>
+            <button id="connect">Connect</button>
+            <button id="customcommand">Takeoff</button>
+        </section>
+        <section>
+            <p>Drone routes</p>
+            <button id="">Fly a circle</button>
+            <button id="">Do a Flip</button>
+        </section>
 
-<script type=text/javascript>
-    $('#get_ss').click(function() { // Button
-      $('#get_ss').addClass('is-loading');
-      $.ajax({
-        url: '/dronetakeoff',
-        type: 'POST',
-        success: function(response) {
-          $('#show_ss').html(response);
-          $('#get_ss').hide();
-        }
-      });
-    });
-  </script>
+
+        <div id="msg">
+
+        </div>
+    </main>
+{% endblock %}
+<script src="{{url_for('static', filename='js/ajax.js')}}"></script>
 </body>
-
 </html>
+

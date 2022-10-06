@@ -1,10 +1,12 @@
 from djitellopy import Tello
 
-drone = Tello()
-drone.connect()
+try:
+    drone = Tello()
+except:
+    print('something went wrong setting drone var')
 
-drone.takeoff()
-drone.get_battery()
+# drone.get_battery()
+
 
 
 def speed():
@@ -42,7 +44,6 @@ def flip_left():
 
 def flip_right():
     drone.flip_right()
-
 
 def move_forward(a: int):
     drone.move_forward(a)
