@@ -1,16 +1,34 @@
-<!DOCK-TYPE html>
+<!DOCTYPE html>
 <html>
+<head>
+    <title>App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+</head>
 <body>
+{% block content %}
+    <main>
+        <section>
+            <h1>Drone control centre</h1>
+            <p>Drone pre controls</p>
+            <button id="connect">Connect</button>
+            <button id="customcommand">Takeoff</button>
+        </section>
+        <section>
+            <p>Drone routes</p>
+            <button id="">Fly a circle</button>
+            <button id="">Do a Flip</button>
+        </section>
 
-<form id="form" method="post">
-    <input type="submit" value="Connect" name="Connect"/>
-    <input type="submit" value="TakeOff" name="TakeOff"/>
-</form>
-<p>{{ message }}</p>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-        crossorigin="anonymous"></script>
+        <div id="msg">
+
+        </div>
+    </main>
+{% endblock %}
+<script src="{{url_for('static', filename='js/ajax.js')}}"></script>
 </body>
 </html>
 
