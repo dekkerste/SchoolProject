@@ -3,12 +3,12 @@ import json
 
 import cv2
 import numpy as np
-import requests as requests
+#import requests as requests
 from flask import Flask, render_template, request, flash, redirect, Response
 from djitellopy import tello
 # Imports the drone commands. This is used as a shortcut from control.py
 try:
-    from python.control import drone
+    from control.py import drone
 except ImportError:
     print('Error while trying to import "control.py"')
 
@@ -30,6 +30,14 @@ def connect():
         print('something went wrong')
     return render_template("index.html")
 
+@app.route('/stats', methods=['GET', 'POST'])
+def battery():
+    print('show stats of drone')
+    try:
+        drone.get_battery()
+    except:
+        print('something went wrong')
+    return print(tello.battery)
 
 @app.route('/takeoff', methods=['GET', 'POST'])
 def takeoff():

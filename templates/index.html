@@ -37,28 +37,12 @@
         </div>
         <div class="white col-span-3 px-6 pb-20 rounded">
             <h3 class="font-semibold text-lg mb-2">Drone Statistics</h3>
-
-        </div>
-        <div class="absolute inset-x-0 bottom-0 col-span-3 text-gray-600 px-6 py-12">
-            <div class="space-y-4 mt-16 lg:mt-20 border-t-2 border-gray-200 pt-8 ">
-                <div class="text-sm space-y-4 md:space-y-1 text-center md:text-left">
-                    <p>©2022 Emanuel-Company. All rights reserved. | All rights reserved</p>
-                    <p>'You are a Whooee.'</p>
-                </div>
-            </div>
-            <div class="space-y-4 mt-8 lg:mt-12">
-                <nav class="space-x-6">
-                    <a href="https://www.rijksoverheid.nl/onderwerpen/drone/vraag-en-antwoord/regels-drone-laag-risico"
-                       class="font-normal text-sm hover:text-black mb-2">Veiligheids Voorschriften</a>
-                    <!-- Link naar vleiligheids voorschriften van Nederland. -->
-                    <a href="/files/Vliegplan formulier.pdf" download class="font-normal text-sm hover:text-black mb-2">Vluchtplan</a>
-                    <!-- Download link van vluchtplan. -->
-                    <a href="#" class="font-normal text-sm hover:text-black mb-2">Privacy</a>
-                </nav>
-            </div>
+            <button id="get_stats">get stats</button>
+            <div id="show_stats"><!-- Show stats --></div>
         </div>
     </div>
 </div>
+
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -78,6 +62,20 @@
         });
     });
 </script>
+
+<script type=text/javascript>
+    $('#get_stats').click(function () { // Button
+        $('#get_stats').addClass('is-loading');
+        $.ajax({
+            url: '/stats',
+            type: 'POST',
+            success: function (response) {
+                $('#show_stats').html(response);
+                $('#get_stats').hide();
+            }
+        });
+    });
+</script>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"
@@ -85,4 +83,3 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
-
