@@ -3,14 +3,11 @@ import json
 
 import cv2
 import numpy as np
-import requests as requests
+# import requests as requests
 from flask import Flask, render_template, request, flash, redirect, Response
 from djitellopy import tello
 # Imports the drone commands. This is used as a shortcut from control.py
-try:
-    from python.control import drone
-except ImportError:
-    print('Error while trying to import "control.py"')
+
 
 app = Flask(__name__)
 app.secret_key = '1234'
@@ -23,17 +20,15 @@ def index():  # the message var needs to be set to zero
 
 @app.route('/connect', methods=['GET', 'POST'])
 def connect():
-    print('connecting to drone')
     try:
         drone.connect()
-        print('The drone is connected!')
+        return {"message": "the drone is connected."}
     except:
-        print('something went wrong')
-    return render_template("index.html")
-
+        # Returns a JSON object which is later used in AJAX to display a message on the webpage.
+        return {"message": "Something went wrong connecting to the drone."}
 
 @app.route('/takeoff', methods=['GET', 'POST'])
-def takeoff():
+def takeoff(drone=None):
     print('taking off the drone')
     try:
         drone.takeoff()
