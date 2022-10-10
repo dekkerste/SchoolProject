@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>App</title>
+    <title>Drone controller</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/styles.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
             integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-</head>
+    <style>
+        html, body {
+            font-family: sans-serif;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
 {% block content %}
     <main>
-            <button id="connect">Connect</button>
-            <button id="takeoff">Takeoff</button>
-            <button id="flycircle">Fly a circle</button>
-            <button id="flyflip">Do a Flip</button>
-            <p>{{ message }}</p>
+            <!--- control buttons --->
+            <button id="connect">Connect</button> -
+            <button id="takeoff">Takeoff</button> -
+            <button id="fly_circle">Fly a circle</button> -
+            <button id="fly_flip">Do a Flip</button>
+            <!---  / end control buttons --->
+            <!--  The html where the error messages will be writen to -->
+            <hr>
             <p id="message"></p>
+            <small><p>[INFO]: check the console...</p></small>
     </main>
 {% endblock %}
+
+<script>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
 <script src="{{url_for('static', filename='js/ajax.js')}}"></script>
 </body>
 </html>
