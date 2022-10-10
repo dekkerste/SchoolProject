@@ -15,7 +15,6 @@ except ImportError:
 app = Flask(__name__)
 app.secret_key = '1234'
 
-
 @app.route("/", methods=['GET', 'POST'])
 def index():  # the message var needs to be set to zero
     return render_template("index.html")
