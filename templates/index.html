@@ -10,22 +10,12 @@
 <body>
 {% block content %}
     <main>
-        <section>
-            <h1>Drone control centre</h1>
-            <p>Drone pre controls</p>
             <button id="connect">Connect</button>
-            <button id="customcommand">Takeoff</button>
-        </section>
-        <section>
-            <p>Drone routes</p>
-            <button id="">Fly a circle</button>
-            <button id="">Do a Flip</button>
-        </section>
-
-
-        <div id="msg">
-
-        </div>
+            <button id="takeoff">Takeoff</button>
+            <button id="flycircle">Fly a circle</button>
+            <button id="flyflip">Do a Flip</button>
+            <p>{{ message }}</p>
+            <p id="message"></p>
     </main>
 {% endblock %}
 <script src="{{url_for('static', filename='js/ajax.js')}}"></script>
