@@ -29,6 +29,16 @@ def connect():
         # Returns a JSON object which is later used in AJAX to display a message on the webpage.
         return {"message": "[ERROR]: Something went wrong connecting to the drone."}
 
+
+@app.route('/flysquare', methods=['GET', 'POST'])
+def flysquare():
+    try:
+        drone.connect()
+        return {"message": "The drone flys a square"}
+    except:
+        # Returns a JSON object which is later used in AJAX to display a message on the webpage.
+        return {"message": "[ERROR]: Something went wrong"}
+
 @app.route('/takeoff', methods=['GET', 'POST'])
 def takeoff(drone=None):
     print('taking off the drone')

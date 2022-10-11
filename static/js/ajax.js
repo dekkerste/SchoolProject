@@ -47,4 +47,24 @@ $(document).ready(function () { //Executes when the page is fully loaded.
             }
         })
     });
+
+        $('button#fly_square').bind('click', function (e) /* e (event) = e.preventDefault(); event.preventDefault */ {
+        e.preventDefault();
+        $.ajax({
+            contentType: 'application/json;charset=UTF-8',
+            type: 'POST',
+            url: $SCRIPT_ROOT + '/flysquare',
+            data: datastring,
+            dataType: "json",
+            success: function (response_data) {
+                console.log("[DEBUG] " + "JSON " + response_data + " of message");
+                console.log(response_data);
+                let obj = response_data;
+                document.getElementById("message").innerHTML = obj.message;
+            },
+            error: function (request, error) {
+                alert("[ERROR]: AJAX request failed! A typical skill issue...");
+            }
+        })
+    });
 })
