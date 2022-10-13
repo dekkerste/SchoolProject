@@ -15,9 +15,6 @@ app = Flask(__name__)
 app.secret_key = '1234'
 
 
-drone = initializeTello()
-
-
 @app.route("/", methods=['GET', 'POST'])
 def index():  # the message var needs to be set to zero
     # request.script_root = url_for('index', _external=True)
@@ -27,7 +24,9 @@ def index():  # the message var needs to be set to zero
 @app.route('/connect', methods=['GET', 'POST'])
 def connect():
     try:
-        drone.connect()
+        global drone
+        print('try to connect')
+        drone = initializeTello()
         return {"message": "the drone is connected."}
     except:
         # Returns a JSON object which is later used in AJAX to display a message on the webpage.
