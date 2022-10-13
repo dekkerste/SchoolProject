@@ -2,12 +2,6 @@ html, body {
     font-family: sans-serif;
     line-height: 1.5;
 }
-img {
-    width: 400px;
-    height: auto;
-    border: none;
-    border-radius: 8px;
-}
 button {
     display: inline-block;
 }
@@ -32,6 +26,12 @@ button {
 
 .grid.grid-cols-3.gap-1 {
     height: 100vh;
+}
+
+.mx-auto {
+    max-width: 500px;
+    margin: 0%;
+    padding: 0%;
 }
 
 /* CSS voor tailwind. */
