@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Drone control centre</title>
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> <!-- Tailwind plugin -->
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel=stylesheet href="{{ url_for('static', filename='css/styles.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/tail.css') }}"> <!-- Tailwind plugin -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 </head>
@@ -16,31 +17,27 @@
     <div class="grid grid-cols-3 gap-1">
         <div class="white row-span-2 px-6 pb-8 rounded">
             <h3 class="font-bold mb-2 my-2 py-2 text-4xl">Commands</h3> <!-- Hier komen de commands voor de drone. -->
-            <button id="connect">Connect</button>
+            <button id="connect" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Connect</button>
             <br>
-            <button id="customcommand">Takeoff</button>
+            <button id="customcommand" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Takeoff</button>
             <br>
-            <button id="">Land drone</button>
+            <button id="" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Land drone</button>
             <br>
-            <button id="">Abort drone</button>
+            <button id="" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Abort drone</button>
             <br>
-            <button id="">Return drone</button>
+            <button id="" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Return drone</button>
             <br>
-            <button id="">Fly route</button>
+            <button id="" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Fly route</button>
             <br>
         </div>
-        <div class="white col-span-2 px-6 pb-20 rounded">
-            <h3 class="font-semibold text-lg mb-2">Drone POV</h3> <!-- Hier komt de POV van de drone. -->
-            <!-- POV -->
-        </div>
-        <div class="white col-span-2 px-6 pb-20 rounded">
+        <div class="white row-span-2 col-span-2 px-6 pb-20 rounded">
             <h3 class="font-semibold text-lg mb-2">Drone Controles</h3> <!-- Hier komt de controles van de drone. -->
-            <button id="">Fly a circle</button>
-            <button id="">Do a Flip</button>
+            <button id="" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Fly a circle</button>
+            <button id="" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Do a Flip</button>
         </div>
         <div class="white col-span-3 px-6 pb-20 rounded">
             <h3 class="font-semibold text-lg mb-2">Drone Statistics</h3>
-            <button id="get_stats">get stats</button>
+            <button id="get_stats" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">get stats</button>
             <div id="show_stats"><!-- Show stats --></div>
 
         </div>
