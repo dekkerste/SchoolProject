@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Drone control centre</title>
     <link rel=stylesheet href="{{ url_for('static', filename='css/styles.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/tail.css') }}"> <!-- Tailwind plugin -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tail.css') }}"> <!-- Tailwind plugin -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -17,27 +17,34 @@
     <div class="grid grid-cols-3 gap-1">
         <div class="white row-span-2 px-6 pb-8 rounded">
             <h3 class="font-bold mb-2 my-2 py-2 text-4xl">Commands</h3> <!-- Hier komen de commands voor de drone. -->
-            <button id="connect" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Connect Drone</button>
+            <button id="connect" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                Connect Drone
+            </button>
             <br>
-            <button id="takeoff" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Takeoff Drone</button>
+            <button id="takeoff" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                Takeoff Drone
+            </button>
             <br>
-            <button id="land" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Land Drone</button>
+            <button id="land" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Land
+                Drone
+            </button>
         </div>
         <div class="white col-span-2 px-6 rounded">
             <h3 class="font-semibold text-lg mb-2">Drone POV</h3> <!-- Hier komt de POV van de drone. -->
             <div>
                 <img class="mx-auto" id="image">
                 <p id="message"></p>
-                <small><p>[INFO]: check the console...</p></small>
             </div>
         </div>
         <div class="white col-span-2 px-6 pb-20 rounded">
             <h3 class="font-semibold text-lg mb-2">Drone Controles</h3> <!-- Hier komt de controles van de drone. -->
-            <button id="fly_square" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Fly a square</button>
+            <button id="fly_square" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                Fly a square
+            </button>
         </div>
         <div class="white col-span-3 px-6 pb-20 rounded">
-            <h3 class="font-semibold text-lg mb-2">Drone Statistics</h3>
-            <button id="get_stats" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">get stats</button>
+            <h3 class="font-semibold text-lg mb-2">Debug</h3>
+            <p>[INFO]: check the console...</p>
             <div id="show_stats"><!-- Show stats --></div>
 
         </div>
@@ -45,10 +52,10 @@
 </div>
 
 <script>
-  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 </script>
-<script src="{{url_for('static', filename='js/jquery.js')}}"></script>
-<script src="{{url_for('static', filename='js/ajax.js')}}"></script>
+<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/ajax.js') }}"></script>
 
 </body>
 </html>

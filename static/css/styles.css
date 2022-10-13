@@ -1,6 +1,8 @@
 html, body {
     font-family: sans-serif;
     line-height: 1.5;
+    overflow: hidden;
+    height: 100vh;
 }
 button {
     display: inline-block;
