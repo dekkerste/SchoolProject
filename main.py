@@ -42,7 +42,9 @@ def connect():
 @app.route('/flysquare', methods=['GET', 'POST'])
 def flysquare():
     try:
-        drone.connect()
+        global drone
+        drone = initializeTello()
+        drone.takeoff()
         move_forward(100)
         move_right(100)
         move_back(100)

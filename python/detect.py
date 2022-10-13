@@ -45,7 +45,7 @@ def detect():
                     take_picture += 1
                     print(take_picture)
                     if take_picture >= take_picture_after:
-                        cv2.imwrite('/static/img/Image.jpg', img)
+                        cv2.imwrite('./static/img/Image.jpg', img)
                         take_picture = 0
         else:
             # resets the timer
