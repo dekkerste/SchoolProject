@@ -39,17 +39,16 @@ def detect():
                     cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 3)
     
                     # if red is on screen for a few seconds then it will take a picture
-                    take_picture += 1
                     print(take_picture)
                     if take_picture >= take_picture_after:
-                        cv2.imwrite('pictures/Image.jpg', img)
+                        cv2.imwrite('/home/deki/Documents/School/SchoolProject/static/img/Image.jpg', img)
                         take_picture = 0
         else:
             # resets the timer
             print(take_picture)
             take_picture = 0
         # shows what the drone sees on screen
-        cv2.imshow("mask", mask)
+        # cv2.imshow("mask", mask)
         cv2.imshow("drone", img)
         cv2.waitKey(1)
 

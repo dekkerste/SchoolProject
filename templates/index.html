@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>App</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/styles.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 </head>
+
 <body>
-{% block content %}
+    {% block content %}
     <main>
         <section>
             <h1>Drone control centre</h1>
@@ -27,8 +29,32 @@
 
         </div>
     </main>
-{% endblock %}
-<script src="{{url_for('static', filename='js/ajax.js')}}"></script>
-</body>
-</html>
+    {% endblock %}
+    <script src="{{url_for('static', filename='js/ajax.js')}}"></script>
+    <button onclick="test()">click me</button>
+    <div>
+        <img id="image">
+    </div>
+    <script>
+        function test() {
+            $.ajax({
+                url: "/static/img/Image.jpg",
+                xhrFields: {
+                    responseType: 'blob'
+                },
+                success(data) {
+                    const url = window.URL || window.webkitURL;
+                    const src = url.createObjectURL(data);
+                    $('#image').attr('src', src);
+                }
+            });
 
+        }
+        $(document).ready(function () {
+            setInterval(test, 10000);
+        });
+    </script>
+    <!-- <img src="/static/img/Image.jpg"> -->
+</body>
+
+</html>

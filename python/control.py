@@ -53,8 +53,8 @@ def move_back(b: int):
     drone.move_back(b)
 
 
-move_forward(100)
-move_right(100)
-move_back(100)
-move_left(100)
-drone.land()
+# move_forward(100)
+# move_right(100)
+# move_back(100)
+# move_left(100)
+# drone.land()
