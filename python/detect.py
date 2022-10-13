@@ -55,3 +55,4 @@ def detect():
         # cv2.imshow("mask", mask)
         cv2.imshow("drone", img)
         cv2.waitKey(1)
+
