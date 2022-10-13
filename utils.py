@@ -11,7 +11,7 @@ def initializeTello():
     drone.yaw_velocity = 0
     drone.speed = 0
     print(drone.get_battery())
-    drone.takeoff()
-    drone.land()
+    # drone.takeoff()
+    # drone.land()
     return drone
 

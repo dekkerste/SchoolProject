@@ -48,7 +48,7 @@ $(document).ready(function () { //Executes when the page is fully loaded.
         })
     });
 
-        $('button#fly_square').bind('click', function (e) /* e (event) = e.preventDefault(); event.preventDefault */ {
+    $('button#fly_square').bind('click', function (e) /* e (event) = e.preventDefault(); event.preventDefault */ {
         e.preventDefault();
         $.ajax({
             contentType: 'application/json;charset=UTF-8',
@@ -67,4 +67,25 @@ $(document).ready(function () { //Executes when the page is fully loaded.
             }
         })
     });
+
+    //function to show the drone feed on the home page
+    function getImage() {
+
+        $.ajax({
+            url: "/static/img/Image.jpg",
+            xhrFields: {
+                responseType: 'blob'
+            },
+            success(data) {
+                const url = window.URL || window.webkitURL;
+                const src = url.createObjectURL(data);
+                $('#image').attr('src', src);
+            }
+        });
+
+    }
+    setInterval(getImage, 100);
+
+    // $(document).ready(function () {
+    // });
 })

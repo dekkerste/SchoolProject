@@ -1,6 +1,7 @@
 #!venv/bin/python3
 import json
-
+import cv2
+import numpy
 # import cv2
 # import numpy as np
 # import requests as requests
@@ -8,8 +9,10 @@ from flask import Flask, render_template, request, flash, redirect, Response, ur
 from djitellopy import Tello
 # Imports the drone commands. This is used as a shortcut from control.py
 from utils import *
+from python.detect import detect
 import logging
-Tello.LOGGER.setLevel(logging.DEBUG)
+
+# Tello.LOGGER.setLevel(logging.DEBUG)
 
 app = Flask(__name__)
 app.secret_key = '1234'
@@ -21,12 +24,15 @@ def index():  # the message var needs to be set to zero
     return render_template("index.html")
 
 
+drone = True
+
+
 @app.route('/connect', methods=['GET', 'POST'])
 def connect():
     try:
         global drone
-        print('try to connect')
         drone = initializeTello()
+        detect()
         return {"message": "the drone is connected."}
     except:
         # Returns a JSON object which is later used in AJAX to display a message on the webpage.
@@ -46,6 +52,7 @@ def flysquare():
     except:
         # Returns a JSON object which is later used in AJAX to display a message on the webpage.
         return {"message": "[ERROR]: Something went wrong"}
+
 
 @app.route('/takeoff', methods=['GET', 'POST'])
 def takeoff(drone=None):
@@ -101,6 +108,7 @@ def flip_left():
 def flip_right():
     drone.flip_right()
 
+
 def move_forward(a: int):
     drone.move_forward(a)
 
@@ -113,5 +121,3 @@ def move_back(b: int):
 if __name__ == "__main__":
     print('[INFO]' + ' ' + 'main.py is running')
     app.run(host="127.0.0.1", port=8000, debug=True)
-
-
