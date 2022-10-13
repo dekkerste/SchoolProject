@@ -1,9 +1,5 @@
 from djitellopy import Tello
 
-try:
-    drone = Tello()
-except:
-    print('something went wrong setting drone var')
 
 # drone.get_battery()
 

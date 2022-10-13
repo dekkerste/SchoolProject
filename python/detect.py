@@ -1,18 +1,21 @@
+# temp? have to see if it's needed
 import cv2
 import numpy
-
-# temp? have to see if it's needed
 from djitellopy import Tello
 
+
+
 def detect():
+    drone = Tello()
+    print('detect.py imported')
     # sets the color requirement to detect
     # it will detect the color red
     lower = numpy.array([0, 150, 20])
     upper = numpy.array([10, 255, 255])
     
     # temp: must be replaced with connect.py (or something like that)
-    drone = Tello()
-    drone.connect()
+    # drone = Tello()
+    # drone.connect()
     
     #turns drone's camera on
     drone.streamon()
@@ -42,15 +45,13 @@ def detect():
                     take_picture += 1
                     print(take_picture)
                     if take_picture >= take_picture_after:
-                        cv2.imwrite('pictures/Image.jpg', img)
+                        cv2.imwrite('/static/img/Image.jpg', img)
                         take_picture = 0
         else:
             # resets the timer
             print(take_picture)
             take_picture = 0
         # shows what the drone sees on screen
-        cv2.imshow("mask", mask)
+        # cv2.imshow("mask", mask)
         cv2.imshow("drone", img)
         cv2.waitKey(1)
-
-detect()

@@ -1,86 +1,48 @@
-<!DOCK-TYPE html>
+<!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Drone control centre</title>
-    <link rel=stylesheet href="{{ url_for('static', filename='css/styles.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/tail.css') }}"> <!-- Tailwind plugin -->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
+    <title>Drone controller</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/styles.css') }}">
+    <style>
+        html, body {
+            font-family: sans-serif;
+            line-height: 1.5;
+        }
+        img {
+            width: 400px;
+            height: auto;
+            border: none;
+            border-radius: 8px;
+        }
+        button {
+            display: inline-block;
+        }
+    </style>
 </head>
-
 <body>
-<div class="gray px-1 py-1">
-    <div class="grid grid-cols-3 gap-1">
-        <div class="white row-span-2 px-6 pb-8 rounded">
-            <h3 class="font-bold mb-2 my-2 py-2 text-4xl">Commands</h3> <!-- Hier komen de commands voor de drone. -->
-            <button id="connect" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Connect</button>
-            <br>
-            <button id="customcommand" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Takeoff</button>
-            <br>
-            <button id="" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Land drone</button>
-            <br>
-            <button id="" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Abort drone</button>
-            <br>
-            <button id="" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Return drone</button>
-            <br>
-            <button id="" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Fly route</button>
-            <br>
-        </div>
-        <div class="white row-span-2 col-span-2 px-6 pb-20 rounded">
-            <h3 class="font-semibold text-lg mb-2">Drone Controles</h3> <!-- Hier komt de controles van de drone. -->
-            <button id="" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Fly a circle</button>
-            <button id="" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Do a Flip</button>
-        </div>
-        <div class="white col-span-3 px-6 pb-20 rounded">
-            <h3 class="font-semibold text-lg mb-2">Drone Statistics</h3>
-            <button id="get_stats" class="mb-1 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">get stats</button>
-            <div id="show_stats"><!-- Show stats --></div>
+{% block content %}
+    <main>
+            <!--- control buttons --->
+            <button id="connect">Connect Drone</button> -
+            <button id="takeoff">Takeoff Drone</button> -
+            <button id="land">Land Drone</button> -
+            <button id="fly_square">Fly a square</button>
+            <!---  / end control buttons --->
+            <!--  The html where the error messages will be writen to -->
+            <br><br>
+            <div>
+                <img id="image">
+                <p id="message"></p>
+                <small><p>[INFO]: check the console...</p></small>
+            </div>
+    </main>
+{% endblock %}
 
-        </div>
-    </div>
-</div>
-
-
-<script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-        crossorigin="anonymous">
+<script>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 </script>
-
-<script type=text/javascript>
-    $('#get_ss').click(function () { // Button
-        $('#get_ss').addClass('is-loading');
-        $.ajax({
-            url: '/dronetakeoff',
-            type: 'POST',
-            success: function (response) {
-                $('#show_ss').html(response);
-                $('#get_ss').hide();
-            }
-        });
-    });
-</script>
-
-<script type=text/javascript>
-    $('#get_stats').click(function () { // Button
-        $('#get_stats').addClass('is-loading');
-        $.ajax({
-            url: '/stats',
-            type: 'POST',
-            success: function (response) {
-                $('#show_stats').html(response);
-                $('#get_stats').hide();
-            }
-        });
-    });
-</script>
-</body>
-
-<script src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-        crossorigin="anonymous"></script>
+<script src="{{url_for('static', filename='js/jquery.js')}}"></script>
+<script src="{{url_for('static', filename='js/ajax.js')}}"></script>
 </body>
 </html>
+
