@@ -1,5 +1,9 @@
 # SchoolProject
 
+Introductie:
+Dit project was gemaakt voor de marine, de marine vroeg aan ons of wij via een website een drone konden besturen, en zien wat de drone ziet en wat allemaal wel niet mogelijk is met een drone.
+De drone is alleen te besturen met de app van deze drone, of via Python, dus hebben wij een website gemaakt met combinatie van HTML en Python.
+
 Instructies:
 We hebben flask nodig om de python met een webserver te verbinden:
 https://flask.palletsprojects.com/en/2.2.x/installation/
